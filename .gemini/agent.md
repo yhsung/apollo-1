@@ -1,7 +1,15 @@
 # Apollo-1 Agent Configuration
 
 ## Python Environment
-Use the virtual environment located at `./venv` for all Python operations.
+
+Always use the virtual environment at `./venv` for all Python operations:
+
+- **Create venv**: `python -m venv ./venv`
+- **Activate**: `source ./venv/bin/activate`
+- **Install package**: `pip install -e .`
+- **Run commands**: Always prefix with `source ./venv/bin/activate &&`
+
+Never use system Python or create venvs in other locations.
 
 ## Version Tracking
 Maintain a version counter that increments with each user request (features, bug fixes, refactoring, etc.) to ensure traceability.

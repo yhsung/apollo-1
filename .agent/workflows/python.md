@@ -4,77 +4,76 @@ description: How to run, test, and develop Python code in this project
 
 # Python Development Workflow
 
+// turbo-all
+
 ## Setup
 
-1. Create and activate virtual environment:
+1. Create virtual environment (if not exists):
    ```bash
-   python -m venv venv
-   source venv/bin/activate
+   test -d ./venv || python -m venv ./venv
    ```
 
-// turbo
-2. Install package in development mode:
+2. Activate virtual environment:
+   ```bash
+   source ./venv/bin/activate
+   ```
+
+3. Install package in development mode:
    ```bash
    pip install -e .
    ```
 
-// turbo
-3. Install dev dependencies (optional):
+4. Install dev dependencies (optional):
    ```bash
    pip install -e ".[dev]"
    ```
 
 ## Running Code
 
-// turbo
 1. Verify imports work:
    ```bash
-   python -c "from apollo.apollo_1 import __version__; print(f'Apollo-1 v{__version__}')"
+   source ./venv/bin/activate && python -c "from apollo.apollo_1 import __version__; print(f'Apollo-1 v{__version__}')"
    ```
 
 2. Run a module:
    ```bash
-   python -m apollo.apollo_1.agents.srs_analyst
+   source ./venv/bin/activate && python -m apollo.apollo_1.agents.srs_analyst
    ```
 
 ## Testing
 
-// turbo
 1. Run all tests:
    ```bash
-   pytest
+   source ./venv/bin/activate && pytest
    ```
 
-// turbo
 2. Run with coverage:
    ```bash
-   pytest --cov=apollo
+   source ./venv/bin/activate && pytest --cov=apollo
    ```
 
 ## Code Quality
 
-// turbo
 1. Check syntax of all Python files:
    ```bash
-   python -m py_compile apollo/apollo_1/**/*.py
+   source ./venv/bin/activate && python -m py_compile apollo/apollo_1/**/*.py
    ```
 
-// turbo
 2. Run type checking (if mypy installed):
    ```bash
-   mypy apollo/
+   source ./venv/bin/activate && mypy apollo/
    ```
 
 ## Package Build
 
 1. Build distribution:
    ```bash
-   python -m build
+   source ./venv/bin/activate && python -m build
    ```
 
 2. Check built package:
    ```bash
-   twine check dist/*
+   source ./venv/bin/activate && twine check dist/*
    ```
 
 ## Environment Variables

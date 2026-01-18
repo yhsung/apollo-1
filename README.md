@@ -22,7 +22,7 @@ pip install -e .
    ```
 
 2. Edit `.env` and add your API keys and configuration:
-   - **LLM_PROVIDER**: Choose `openai`, `local`, or `anthropic`.
+   - **LLM_PROVIDER**: Choose `openai`, `local` (alias `lm_studio`), or `anthropic`.
    - **Redmine**: Set URL and API key for issue tracking.
    - **Langfuse**: Set keys for observability (optional).
 

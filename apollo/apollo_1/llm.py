@@ -15,6 +15,7 @@ class LLMProvider:
     """Supported LLM providers."""
     OPENAI = "openai"
     LOCAL = "local"
+    LM_STUDIO = "lm_studio"
     ANTHROPIC = "anthropic"
 
 def get_llm(
@@ -26,7 +27,7 @@ def get_llm(
     Get an LLM instance based on the provider configuration.
     
     Args:
-        provider: Provider name (openai, local, anthropic). 
+        provider: Provider name (openai, local, lm_studio, anthropic). 
                   Defaults to LLM_PROVIDER env var or 'openai'.
         temperature: Sampling temperature. Defaults to 0.
         model_name: Model name override. Defaults to env var or provider default.
@@ -47,7 +48,7 @@ def get_llm(
         )
         
     # --- Local (e.g., LM Studio) ---
-    elif provider == LLMProvider.LOCAL:
+    elif provider in (LLMProvider.LOCAL, LLMProvider.LM_STUDIO):
         base_url = os.getenv("LOCAL_LLM_BASE_URL", "http://localhost:1234/v1")
         api_key = os.getenv("LOCAL_LLM_API_KEY", "lm-studio")
         model = model_name or os.getenv("LOCAL_LLM_MODEL", "local-model")

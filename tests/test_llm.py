@@ -46,6 +46,23 @@ class TestLLMFactory:
                 temperature=0
             )
 
+    @patch('apollo.apollo_1.llm.ChatOpenAI')
+    def test_get_llm_lm_studio_alias(self, mock_chat_openai):
+        """Test lm_studio alias works like local provider."""
+        env_vars = {
+            "LLM_PROVIDER": "lm_studio",
+            # Should use same local config vars
+            "LOCAL_LLM_BASE_URL": "http://localhost:5555/v1",
+        }
+        with patch.dict(os.environ, env_vars):
+            get_llm()
+            mock_chat_openai.assert_called_with(
+                base_url="http://localhost:5555/v1",
+                api_key="lm-studio",  # Check default
+                model="local-model",  # Check default
+                temperature=0
+            )
+
     def test_get_llm_anthropic_import_error(self):
         """Test Anthropic provider raises error if package missing."""
         with patch.dict(os.environ, {"LLM_PROVIDER": "anthropic"}), \

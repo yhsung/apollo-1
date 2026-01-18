@@ -1,17 +1,15 @@
 import os
-from langchain.agents import AgentExecutor, create_react_agent
-from langchain_openai import ChatOpenAI
-from langchain import hub
-from langfuse.callback import CallbackHandler
+from langchain_classic.agents import AgentExecutor, create_react_agent
+from langchain_classic import hub
+from langfuse.langchain import CallbackHandler
 
-# Import reusable tools from the tools module
+# Import reusable tools and LLM factory
 from apollo.apollo_1.tools import all_tools as tools
+from apollo.apollo_1.llm import get_llm
 
 # Initialize Langfuse Tracking
 langfuse_handler = CallbackHandler(
-    public_key=os.getenv("LANGFUSE_PUBLIC_KEY"),
-    secret_key=os.getenv("LANGFUSE_SECRET_KEY"),
-    host=os.getenv("LANGFUSE_HOST")
+    public_key=os.getenv("LANGFUSE_PUBLIC_KEY")
 )
 
 # --- Optimized SWE.1 to SWE.2 Transition Prompt ---
@@ -39,7 +37,9 @@ In addition to following SWE.1 and ISO 26262 standards, you must ensure the outp
   - Based on the requirements, suggest design patterns for SWE.2 (e.g., Redundancy, Error Correction Code, Layered Architecture).
 """
 
-llm = ChatOpenAI(model="gpt-4-turbo", temperature=0)
+# Initialize LLM using factory (supports OpenAI, Local, Anthropic)
+llm = get_llm()
+
 base_prompt = hub.pull("hwchase17/react")
 
 # Inject the English-optimized instructions

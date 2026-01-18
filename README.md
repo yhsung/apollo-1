@@ -13,7 +13,21 @@ source venv/bin/activate
 pip install -e .
 ```
 
+
+## Configuration
+
+1. Copy the example environment file:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Edit `.env` and add your API keys and configuration:
+   - **LLM_PROVIDER**: Choose `openai`, `local`, or `anthropic`.
+   - **Redmine**: Set URL and API key for issue tracking.
+   - **Langfuse**: Set keys for observability (optional).
+
 ## Usage
+
 
 ```python
 from apollo.apollo_1 import run_srs_to_swe2_workflow

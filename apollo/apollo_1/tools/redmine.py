@@ -2,7 +2,7 @@
 Redmine Tools - Tools for interacting with Redmine issue tracking and wiki.
 """
 import os
-from langchain.tools import Tool, StructuredTool
+from langchain_core.tools import Tool, StructuredTool
 from redminelib import Redmine
 
 

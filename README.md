@@ -2,15 +2,34 @@
 
 LangChain-based agent project for automotive software requirements engineering, following ASPICE and ISO 26262 standards.
 
+## Installation
+
+```bash
+# Create and activate virtual environment
+python -m venv venv
+source venv/bin/activate
+
+# Install package in development mode
+pip install -e .
+```
+
+## Usage
+
+```python
+from apollo.apollo_1 import run_srs_to_swe2_workflow
+from apollo.apollo_1.tools import all_tools
+```
+
 ## Project Structure
 
 ```
-src/
-├── agents/          # Agent implementations
-│   └── srs_analyst.py
-└── tools/           # Reusable LangChain tools
-    ├── knowledge_base.py
-    └── redmine.py
+apollo/
+└── apollo_1/
+    ├── agents/          # Agent implementations
+    │   └── srs_analyst.py
+    └── tools/           # Reusable LangChain tools
+        ├── knowledge_base.py
+        └── redmine.py
 docs/
 ├── plans/           # Versioned implementation plans
 └── walkthroughs/    # Versioned walkthrough documentation
@@ -18,24 +37,12 @@ docs/
 
 ## Version History
 
-**Current Version**: v0.1.0
+**Current Version**: v0.2.0
 
 | Version | Date | Type | Description |
 |---------|------|------|-------------|
+| v0.2.0 | 2026-01-18 | feature | Refactored to Python namespace package `apollo.apollo_1` |
 | v0.1.0 | 2026-01-18 | feature | Refactored tools from srs_analyst.py into reusable src/tools/ module |
-
-## Setup
-
-1. Create and activate virtual environment:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate
-   ```
-
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
 
 ## License
 

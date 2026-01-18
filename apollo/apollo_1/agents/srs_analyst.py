@@ -5,7 +5,7 @@ from langchain import hub
 from langfuse.callback import CallbackHandler
 
 # Import reusable tools from the tools module
-from src.tools import all_tools as tools
+from apollo.apollo_1.tools import all_tools as tools
 
 # Initialize Langfuse Tracking
 langfuse_handler = CallbackHandler(

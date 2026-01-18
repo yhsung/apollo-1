@@ -20,7 +20,7 @@ Save all documentation with version tags:
 Create directories if they don't exist.
 
 ## Project Structure
-- `src/agents/` - Agent implementations
-- `src/tools/` - Reusable LangChain tools
+- `apollo/apollo_1/agents/` - Agent implementations
+- `apollo/apollo_1/tools/` - Reusable LangChain tools
 - `docs/plans/` - Versioned implementation plans
 - `docs/walkthroughs/` - Versioned walkthrough documentation

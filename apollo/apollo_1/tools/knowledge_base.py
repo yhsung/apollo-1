@@ -3,7 +3,7 @@ Knowledge Base Tool - Hierarchical RAG for searching safety goals, organizationa
 and historical SRS/SAD documents.
 """
 import os
-from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 from langchain_core.tools import Tool
 from langchain_classic.retrievers import ParentDocumentRetriever

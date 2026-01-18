@@ -1,0 +1,5 @@
+{
+  "venv": {
+    "pythonPath": "./venv/bin/python"
+  }
+}
